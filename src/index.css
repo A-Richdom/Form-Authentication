@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.home {
+    margin-top: 3rem;
+    height: 50vh !important;
+    width: 40%;
+    /* background-color: red; */
+}
+.contentWrapper {
+    margin-top: 2rem;
+}
+.btns {
+    gap: 5rem;
+    margin-top: 6rem;
+}
+.error {
+    border: 2px solid red;
+}
