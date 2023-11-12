@@ -29,7 +29,14 @@ const SignUp = () => {
                 console.log(response);
 
             //save the email to local storage
-                localStorage.setItem('signUpEmail', values.email)
+                // localStorage.setItem('signUpEmail', values.email)
+                const existingEmails =JSON.parse(localStorage.getItem('signUpEmails')) || [];
+               
+
+                existingEmails.push(data.email);
+                
+
+                localStorage.setItem('sighUpEmails', JSON.stringify(existingEmails));
 
                 resetForm();
                 navigate('/home/login')
