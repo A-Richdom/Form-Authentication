@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios';
-import {validationSchema} from './YupAuth'
+import {validationSchema} from './YupSignUp'
 // import {useNavigate} from 'react-router-dom'
 
 
 const Login = () => {
   const [signUpEmail, setsignUpEmail] = useState('');
+  const [loginError, setloginError] = useState('');
 
   useEffect(() => {
     //Retrieve the email from local storage
     const email = localStorage.getItem('signUpEmail');
-    console.log('ssjsjsjjs ridwan',email)
+    // console.log('ssjsjsjjs ridwan',email)
 
     setsignUpEmail(email)
   }, [setsignUpEmail]);
 
-  console.log(signUpEmail,'hfhfhffh')
+  // console.log(signUpEmail,'hfhfhffh')
 
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
@@ -28,12 +29,23 @@ const Login = () => {
     validationSchema,
 
     onSubmit: async(data) => {
-      const response = await axios.post('http://localhost:2000/auth/login', data)
-      console.log('LOG IN');
+      console.log({data});
+      // try {
+      //   const response = await axios.post('http://localhost:2000/auth/login', data)
+      //   console.log({response: response.data});
+      // } 
+      // catch (err) {
+      //   // const error = err?.response?.data
+        
+      //   console.log(err);
+      //   // setloginError(error.message)
+      // }
+      
     },
     enableReinitialize:true
     
   })
+// console.log({errors,values})
   return (
     <div>
         <form className='container border border-primary rounded-3 p-4 col-md-4 fw-bold' onSubmit={handleSubmit}>
@@ -59,10 +71,10 @@ const Login = () => {
                     onBlur={handleBlur}
                     value={values.password}
                 />
-                {errors.password && touched.password && <p className='text-danger'>{errors.password}</p>}
+                {((errors.password && touched.password) || loginError) && <p className='text-danger'>{errors.password || loginError}</p>}
             </div>
             
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary form-control">Submit</button>
         </form>
     </div>
   )

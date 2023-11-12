@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import {useFormik} from 'formik'
-import {validationSchema} from './YupAuth'
+import {validationSchema} from './YupSignUp'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-
-
 
 
 
