@@ -11,12 +11,10 @@ const Login = () => {
   useEffect(() => {
     //Retrieve the email from local storage
     const email = localStorage.getItem('signUpEmail');
-    // console.log('ssjsjsjjs ridwan',email)
 
     setsignUpEmail(email)
   }, [setsignUpEmail]);
 
-  // console.log(signUpEmail,'hfhfhffh')
 
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
@@ -29,16 +27,16 @@ const Login = () => {
 
     onSubmit: async(data) => {
       console.log({data});
-      // try {
-      //   const response = await axios.post('http://localhost:2000/auth/login', data)
-      //   console.log({response: response.data});
-      // } 
-      // catch (err) {
-      //   // const error = err?.response?.data
+      try {
+        const response = await axios.post('http://localhost:2000/auth/login', data)
+        console.log({response: response.data});
+      } 
+      catch (err) {
+        const error = err?.response?.data
         
-      //   console.log(err);
-      //   // setloginError(error.message)
-      // }
+        // console.log(err);
+        setloginError(error.message)
+      }
       
     },
     enableReinitialize:true
@@ -54,11 +52,14 @@ const Login = () => {
                 <input type="email" class="form-control" 
                     placeholder='Email Address'
                     name='email'
-                    onChange={handleChange}
+                    onChange={(e)=>{
+                      setloginError('')
+                      handleChange(e)
+                    }}
                     onBlur={handleBlur}
                     value={values.email}
                 />
-                {errors.email && touched.email && <p className='text-danger'>{errors.email}</p>}
+                {((errors.email && touched.email) || loginError) && <p className='text-danger'>{errors.email ||  loginError}</p>}
             </div>
 
             <div class="mb-3">
@@ -70,7 +71,7 @@ const Login = () => {
                     onBlur={handleBlur}
                     value={values.password}
                 />
-                {((errors.password && touched.password) || loginError) && <p className='text-danger'>{errors.password || loginError}</p>}
+                {errors.password && touched.password && <p className='text-danger'>{errors.password}</p>}
             </div>
             
             <button type="submit" class="btn btn-primary form-control">Submit</button>
