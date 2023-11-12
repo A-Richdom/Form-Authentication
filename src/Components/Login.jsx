@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios';
-import {validationSchema} from './YupSignUp'
-// import {useNavigate} from 'react-router-dom'
+import {validationSchema} from './YupLogin'
 
 
 const Login = () => {
