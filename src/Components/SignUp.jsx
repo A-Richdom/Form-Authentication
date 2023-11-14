@@ -29,14 +29,14 @@ const SignUp = () => {
                 console.log(response);
 
             //save the email to local storage
-                // localStorage.setItem('signUpEmail', values.email)
-                const existingEmails =JSON.parse(localStorage.getItem('signUpEmails')) || [];
+                localStorage.setItem('signUpEmail', values.email)
+
+                //SAVING Arrays OF EXISTING EMAILs to Local Storage
+                // const existingEmails =JSON.parse(localStorage.getItem('signUpEmails')) || [];
                
+                // console.log({existingEmails});
 
-                existingEmails.push(data.email);
-                
-
-                localStorage.setItem('sighUpEmails', JSON.stringify(existingEmails));
+                // localStorage.setItem('signUpEmails', JSON.stringify([...existingEmails,data.email]));
 
                 resetForm();
                 navigate('/home/login')
