@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios';
 import {validationSchema} from './YupLogin'
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [signUpEmail, setsignUpEmail] = useState('');
   const [loginError, setloginError] = useState('');
+  router = useNavigate()
 
   useEffect(() => {
     //Retrieve the email from local storage
@@ -29,6 +31,10 @@ const Login = () => {
       try {
         const response = await axios.post('http://localhost:2000/auth/login', data)
         console.log({response: response.data});
+
+        if (response.token) {
+          localStorage.setItem('token', response.token)
+        }
       } 
       catch (err) {
         const error = err?.response?.data
