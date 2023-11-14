@@ -28,7 +28,7 @@ const SignUp = () => {
                 console.log({response:response.data});
                 console.log(response);
 
-            //save the email to local storage
+            //Save the Email to local storage
                 localStorage.setItem('signUpEmail', values.email)
 
                 //SAVING Arrays OF EXISTING EMAILs to Local Storage
