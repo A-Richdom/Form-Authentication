@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [signUpEmail, setsignUpEmail] = useState('');
   const [loginError, setloginError] = useState('');
-  router = useNavigate()
+  const router = useNavigate()
 
   useEffect(() => {
     //Retrieve the email from local storage
@@ -35,6 +35,7 @@ const Login = () => {
         if (response.token) {
           localStorage.setItem('token', response.token)
         }
+        router('/home/dashboard')
       } 
       catch (err) {
         const error = err?.response?.data
