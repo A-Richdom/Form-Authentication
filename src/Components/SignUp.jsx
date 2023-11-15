@@ -3,6 +3,7 @@ import {useFormik} from 'formik'
 import {validationSchema} from './YupSignUp'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import { PublicRequest } from './Request'
 
 
 
@@ -24,7 +25,8 @@ const SignUp = () => {
         onSubmit: async (data) => {
             console.log(data);
             try {
-                const response = await axios.post('http://localhost:2000/auth/signup', data)
+                // const response = await axios.post('http://localhost:2000/auth/signup', data)
+                const response = await PublicRequest.post('/auth/signup', data)
                 console.log({response:response.data});
                 console.log(response);
 

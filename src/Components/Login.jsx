@@ -3,6 +3,7 @@ import {useFormik} from 'formik'
 import axios from 'axios';
 import {validationSchema} from './YupLogin'
 import { useNavigate } from 'react-router-dom';
+import { PublicRequest } from './Request';
 
 
 const Login = () => {
@@ -29,7 +30,8 @@ const Login = () => {
     onSubmit: async(data) => {
 
       try {
-        const response = await axios.post('http://localhost:2000/auth/login', data)
+        // const response = await axios.post('http://localhost:2000/auth/login', data)
+        const response = await PublicRequest.post('/auth/login', data)
         if (response.data.token) {
           localStorage.setItem('token', response.data.token)
           router('/home/dashboard')
