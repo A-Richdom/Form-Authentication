@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 const SignUp = () => {
-    const navigate = useNavigate()
+    const router = useNavigate()
 
     const [responseError,setResponseError] = useState('')
     
@@ -39,7 +39,7 @@ const SignUp = () => {
                 // localStorage.setItem('signUpEmails', JSON.stringify([...existingEmails,data.email]));
 
                 resetForm();
-                navigate('/home/login')
+                router('/home/login')
             } 
             catch (err) {
                 const error = err?.response?.data

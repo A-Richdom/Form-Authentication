@@ -27,17 +27,16 @@ const Login = () => {
     validationSchema,
 
     onSubmit: async(data) => {
-      console.log({data});
+
       try {
         const response = await axios.post('http://localhost:2000/auth/login', data)
-        console.log({response: response.data});
-
-        if (response.token) {
-          localStorage.setItem('token', response.token)
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token)
+          router('/home/dashboard')
         }
-        router('/home/dashboard')
       } 
       catch (err) {
+      
         const error = err?.response?.data
         
         // console.log(err);
