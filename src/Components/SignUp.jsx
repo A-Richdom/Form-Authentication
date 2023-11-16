@@ -8,7 +8,7 @@ import { PublicRequest } from './Request'
 
 
 const SignUp = () => {
-    const router = useNavigate();
+    const router = useNavigate()
 
     const [responseError,setResponseError] = useState('')
     
