@@ -4,7 +4,7 @@ let Base_Url = 'http://localhost:2000/'
 
 export const  PublicRequest = axios.create({
     baseURL: Base_Url
-})
+});
 
 export const userRequest = () => {
     let token = localStorage.getItem('token')
