@@ -12,7 +12,7 @@ const Login = () => {
   const router = useNavigate()
 
   useEffect(() => {
-    //Retrieve the email from local storage
+    //Retrieve the email from Local Storage
     const email = localStorage.getItem('signUpEmail');
 
     setsignUpEmail(email)
