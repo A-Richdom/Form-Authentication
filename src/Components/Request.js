@@ -9,7 +9,7 @@ export const  PublicRequest = axios.create({
 export const userRequest = () => {
     let token = localStorage.getItem('token')
 
-    if (token) {
+    if (!token) {
         alert('Please Login')
     }
 

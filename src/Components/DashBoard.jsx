@@ -13,7 +13,7 @@ const DashBoard = () => {
    }
    getCurrentUser()
   }, []);
-
+  
   function handleLogOut() {
     localStorage.removeItem('token')
     router('/home/login')

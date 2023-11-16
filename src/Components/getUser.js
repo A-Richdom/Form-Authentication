@@ -4,6 +4,7 @@ import { userRequest } from './Request';
 
 export const getUser = async() => {
     
+    
     // let token = localStorage.getItem('token')
     // if (!token) {
     //     alert('Please Login')
