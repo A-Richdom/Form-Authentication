@@ -74,11 +74,14 @@ const Login = () => {
                 <input type="password" class="form-control" 
                     placeholder='Password'
                     name='password'
-                    onChange={handleChange}
+                    onChange={(e)=> {
+                      setloginError('')
+                      handleChange(e)
+                    }}
                     onBlur={handleBlur}
                     value={values.password}
                 />
-                {errors.password && touched.password && <p className='text-danger'>{errors.password}</p>}
+                {(errors.password && touched.password) || loginError && <p className='text-danger'>{errors.password || loginError}</p>}
             </div>
             
             <button type="submit" class="btn btn-primary form-control">Submit</button>
