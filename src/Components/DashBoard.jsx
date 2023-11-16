@@ -24,13 +24,14 @@ const DashBoard = () => {
       <main>
         <div className='container col-md-6 border border-info border-3 rounded-2 '>
           <h1>Dashboard</h1>
-          <div className='p-5'>
+          <div className='pt-5'>
             <h1>Hello Welcome {user.name}</h1>
-            <p>Email: {user.email}</p>
+            <p className='fw-bold'>Email: {user.email}</p>
           </div>
+          <button className='btn btn-danger  fw-bold' onClick={handleLogOut}>Logout</button>
         </div>
           
-          <button onClick={handleLogOut}>Logout</button>
+          
       </main>
     )
   }

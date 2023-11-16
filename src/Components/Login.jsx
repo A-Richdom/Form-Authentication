@@ -16,7 +16,7 @@ const Login = () => {
     const email = localStorage.getItem('signUpEmail');
 
     setsignUpEmail(email)
-  }, [setsignUpEmail]);
+  }, []);
 
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
