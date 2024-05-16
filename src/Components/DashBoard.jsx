@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getUser } from './getUser'
+import { getUser } from './GetUser'
 
 const DashBoard = () => {
   const router = useNavigate();
